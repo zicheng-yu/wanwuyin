@@ -38,6 +38,8 @@ npx vite --port 5199
 
 `seal=` 可换成 `web/public/seals.json` 里的名字：elephant、blue_whale、trex、shark、ant、saturn、volcano、yongzhong。
 
+本地入口仍是 `index.html`（万物有声）。静态演示的落地页在开发时是 http://localhost:5199/home.html ，构建后变成站点首页。部署说明、模型体积和 dist 里不带万物有声数据的原因见 [docs/静态演示.md](docs/静态演示.md)。
+
 ## 目录
 
 ```

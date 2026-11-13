@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="万物印：摸不到的世界，一枚一枚握在手里。八枚合影、三种印材、造印机离线体验。" />
+    <title>万物印</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        margin: 0; min-height: 100vh;
+        font-family: "PingFang SC", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+        background: #efe9dd; color: #3d3830;
+      }
+      main { max-width: 40rem; margin: 0 auto; padding: 2.4rem 1.2rem 3rem; }
+      h1 { margin: 0 0 0.45rem; font-size: clamp(2rem, 7vw, 2.8rem); font-weight: 650; letter-spacing: 0.14em; }
+      .lead { margin: 0 0 1.5rem; font-size: 1.05rem; line-height: 1.65; }
+      nav { display: grid; gap: 0.7rem; }
+      a.card {
+        display: block; padding: 0.95rem 1.05rem; text-decoration: none; color: inherit;
+        background: #f7f3ea; border: 1px solid #e2d9c8; border-radius: 14px;
+      }
+      a.card:hover, a.card:focus-visible { border-color: #2c4a41; outline: none; }
+      a.card strong { display: block; font-size: 1.05rem; letter-spacing: 0.04em; }
+      a.card span { display: block; margin-top: 0.22rem; color: #6d655b; font-size: 0.92rem; line-height: 1.45; }
+      .seals { display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+      .seals a {
+        display: inline-block; padding: 0.38rem 0.75rem; color: #315247; text-decoration: none;
+        background: #f7f3ea; border: 1px solid #e2d9c8; border-radius: 999px;
+      }
+      .seals a:hover, .seals a:focus-visible { border-color: #2c4a41; outline: none; }
+      footer { margin-top: 1.6rem; color: #6d655b; font-size: 0.9rem; line-height: 1.6; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>万物印</h1>
+      <p class="lead">摸不到的世界，一枚一枚握在手里。先认形状，翻过来才有答案，再拓出一页书。</p>
+      <nav aria-label="演示">
+        <a class="card" href="seal.html?view=set"><strong>八枚合影</strong><span>整套印章，和各自拓出来的一页</span></a>
+        <a class="card" href="seal.html?view=set&amp;materials=1"><strong>三种印材</strong><span>同一枚大象印：青铜、玄武岩、木雕</span></a>
+        <a class="card" href="seal.html?view=anim&amp;seal=elephant"><strong>摸、翻面、拓印</strong><span>一枚大象印，从认形状到成页</span></a>
+        <a class="card" href="maker.html"><strong>造印机</strong><span>这里可以摸已经备好的印。在线铸造只在本机后端打开时可用。</span></a>
+      </nav>
+      <ul class="seals" aria-label="单枚印">
+        <li><a href="seal.html?seal=elephant">大象</a></li>
+        <li><a href="seal.html?seal=blue_whale">蓝鲸</a></li>
+        <li><a href="seal.html?seal=trex">霸王龙</a></li>
+        <li><a href="seal.html?seal=shark">大白鲨</a></li>
+        <li><a href="seal.html?seal=ant">蚂蚁</a></li>
+        <li><a href="seal.html?seal=saturn">土星</a></li>
+        <li><a href="seal.html?seal=volcano">火山</a></li>
+        <li><a href="seal.html?seal=yongzhong">甬钟</a></li>
+      </ul>
+      <footer>手机和电脑用同一个链接。合影、单枚印和动画都可以直接打开。</footer>
+    </main>
+  </body>
+</html>
