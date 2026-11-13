@@ -1,12 +1,12 @@
 import { defineConfig } from "vite";
 
-// Three pages: the 3D viewer, the screen-reader-first listening page, and the seal form concept.
+// Entry points: sound viewer, listening page, seal display, and maker workspace.
 export default defineConfig({
   server: {
     proxy: { "/api": "http://127.0.0.1:8000" },
   },
   build: {
-    rolldownOptions: { input: { main: "index.html", listen: "listen.html", seal: "seal.html" } },
+    rolldownOptions: { input: { main: "index.html", listen: "listen.html", seal: "seal.html", maker: "maker.html" } },
     chunkSizeWarningLimit: 900,
   },
 });
