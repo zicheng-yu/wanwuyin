@@ -26,7 +26,13 @@ let operation = 0, selection = 0, retryAction: (() => void) | undefined;
 let requestController: AbortController | undefined, photoURL = "", announced = "";
 let selectedPhoto: Blob | undefined;
 let elapsedStart = 0, elapsedBase = 0, isWaiting = false;
-toggle.checked = new URLSearchParams(location.search).get("offline") === "1";
+declare const __WANWUYIN_STATIC__: boolean;
+const staticDemo = __WANWUYIN_STATIC__;
+toggle.checked = staticDemo || new URLSearchParams(location.search).get("offline") === "1";
+if (staticDemo) {
+  const note = document.querySelector(".flow-card p");
+  if (note) note.textContent = "这是静态演示。线上不连接造印机，请直接摸已经备好的印。在线铸造只在本机后端打开时可用。";
+}
 const offline = () => toggle.checked || !navigator.onLine;
 const say = (text: string) => { if (announced !== text) { live.textContent = text; announced = text; } };
 const error = (text: string, action?: () => void, label = "继续查询这枚印") => {

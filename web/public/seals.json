@@ -6,5 +6,5 @@
   {"name": "ant", "label": "蚂蚁", "cells": "⠍⠔⠄⠊⠄", "why": "太小", "real": "身长不到 1 厘米", "glb": "objects/ant/model.glb", "yaw": -0.003},
   {"name": "saturn", "label": "土星", "cells": "⠞⠥⠄⠓⠡⠁", "why": "太远", "real": "光环宽约 27 万公里", "glb": "objects/saturn/model.glb", "yaw": 0.63},
   {"name": "volcano", "label": "火山", "cells": "⠓⠕⠄⠱⠧⠁", "why": "太烫", "real": "高几千米", "glb": "objects/volcano/model.glb", "yaw": 0.0},
-  {"name": "yongzhong", "label": "甬钟", "cells": "⠹⠄⠌⠲⠁", "why": "隔着展柜", "real": "高约 45 厘米", "glb": "objects/yongzhong/model.glb", "yaw": 0.0}
+  {"name": "yongzhong", "label": "甬钟", "cells": "⠹⠄⠌⠲⠁", "why": "隔着展柜", "real": "高约 45 厘米", "glb": "objects/yongzhong/seal.glb", "yaw": 0.0}
 ]

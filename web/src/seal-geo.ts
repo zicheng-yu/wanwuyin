@@ -1,6 +1,11 @@
 import * as THREE from "three";
 import { RoundedBoxGeometry } from "three/addons/geometries/RoundedBoxGeometry.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { MeshoptDecoder } from "three/addons/libs/meshopt_decoder.module.js";
+
+// Shared by the seal pages and the maker stage. The slim GLBs use EXT_meshopt_compression.
+const gltfLoader = new GLTFLoader();
+gltfLoader.setMeshoptDecoder(MeshoptDecoder);
 
 export type SealDef = { name: string; label: string; cells: string; why: string; real: string; glb: string; yaw?: number };
 export type Loaded = { def: SealDef; model: THREE.Object3D; W: number; yaw: number };
@@ -133,7 +138,7 @@ export function rest(obj: THREE.Object3D) {
 }
 
 export async function loadSeal(def: SealDef, yawOverride?: number): Promise<Loaded> {
-  const model = (await new GLTFLoader().loadAsync(def.glb)).scene;
+  const model = (await gltfLoader.loadAsync(def.glb)).scene;
   // Long things (animals) show their side, on the knob and in the relief alike: def.yaw turns
   // the long axis of the plan view onto x (computed once per model, see seals.json).
   const yaw = yawOverride ?? def.yaw ?? 0;

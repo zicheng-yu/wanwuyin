@@ -18,6 +18,13 @@
       .head { position: absolute; left: 0; right: 0; top: 4vh; text-align: center; }
       .head b { display: block; font-size: 4.2vh; letter-spacing: 0.5vh; }
       .head span { font-size: 2vh; opacity: 0.75; }
+      @media (max-aspect-ratio: 9/10) {
+        .tag { max-width: 42vw; }
+        .tag span { display: none; }
+        .head { top: 8vh; }
+        .head b { font-size: 3vh; }
+        .head span { font-size: 1.6vh; }
+      }
       #cap { position: absolute; left: 0; right: 0; top: 7vh; text-align: center; font-size: 3.4vh; letter-spacing: 2px; } /* top: a flipped seal's knob hangs into the bottom of the frame */
     </style>
   </head>

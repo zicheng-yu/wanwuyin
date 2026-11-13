@@ -99,11 +99,17 @@ if (view === "set") {
   const all = got.flatMap((r) => (r.status === "fulfilled" ? [r.value] : []));
   // Tall knobs hide what is behind them, so the taller half stands in the back row.
   const built = all.map((s) => ({ s, sl: seal(s) })).sort((a, b) => b.sl.userData.height - a.sl.userData.height);
-  const cols = materialsView ? 3 : Math.ceil(built.length / 2), dx = materialsView ? 9 : 12, dz = 23;
+  // Wide screens keep the reviewed two-row lineup. A phone is too narrow for four
+  // columns, so the same seals stack into two columns and the camera steps back.
+  const portrait = !materialsView && camera.aspect < 0.9;
+  const cols = materialsView ? 3 : portrait ? 2 : Math.ceil(built.length / 2);
+  const dx = materialsView ? 9 : 12, dz = portrait ? 26 : 23;
+  const rows = Math.max(1, Math.ceil(built.length / cols));
   const span = Math.max(1, cols / 4);
-  shadowArea(44 * span, 4096);
+  shadowArea(portrait ? 48 : 44 * span, portrait ? 2048 : 4096);
   target.set(0, 1.5, 2.5);
-  const distance = materialsView ? Math.max(38, 52 / camera.aspect) : 64 * span;
+  const distance = materialsView ? Math.max(38, 52 / Math.max(camera.aspect, 0.35))
+    : portrait ? 54 * rows : 64 * span;
   camera.position.set(0, 1.5 + distance * Math.sin(0.56), 2.5 + distance * Math.cos(0.56));
   camera.lookAt(target);
   camera.updateMatrixWorld();
@@ -126,8 +132,8 @@ if (view === "set") {
     }
   }
   built.forEach(({ s, sl }, i) => {
-    const row = Math.floor(i / cols), n = row === 0 ? cols : built.length - cols;
-    const x = ((i % cols) - (n - 1) / 2) * dx, z = materialsView ? 0 : (row - 0.5) * dz;
+    const row = Math.floor(i / cols), n = Math.min(cols, built.length - row * cols);
+    const x = ((i % cols) - (n - 1) / 2) * dx, z = materialsView ? 0 : (row - (rows - 1) / 2) * dz;
     sl.position.set(x, 0, z - 3.4);
     sl.rotation.y = 0.4;
     const pg = page(s);
