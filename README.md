@@ -4,7 +4,14 @@
 
 ![整套合影：8 枚印和各自的铜箔拓片](docs/media/seal_set.png)
 
-[提交材料：Lux3D 能力、作品入口和实际积分](docs/Lux3D能力对照.md)
+## 提交材料（2026-11-17，团队：盼盼法式小面包）
+
+- **项目报告书**：[report/盼盼法式小面包-万物印.pdf](report/盼盼法式小面包-万物印.pdf)，LaTeX 源文件在 `report/`（`latexmk -xelatex main.tex`）
+- **演示视频**：[submission/盼盼法式小面包-万物印-演示视频.mp4](submission/盼盼法式小面包-万物印-演示视频.mp4)（106 秒，无配音）。画面都是网页实机录屏和实时渲染，包括两次现场调用 Lux3D：输入"我想摸摸长颈鹿"文生 3D，上传大都会博物馆的青铜钟照片图生 3D。制作脚本和步骤见 [web/tools/video/](web/tools/video/README.md)
+- **封面与社媒**：`submission/` 下的横版、3:4 竖版封面和[社媒文案](submission/社媒文案.md)
+- 万物印目前是概念作品和可运行的数字样机，没有做实体打印，也还没有和盲童一起测试
+
+[Lux3D 能力、作品入口和实际积分](docs/Lux3D能力对照.md)
 
 - **任务和进度**：[Linear 项目「2026.10-11 aholo 3d hackathon」](https://linear.app/youonlyattendonce/project/202610-11-aholo-3d-hackathon-8281b99b4b05)，交接说明写在项目描述里
 - **概念片**（38.9 秒，无声）：[docs/media/wanwuyin_concept.mp4](docs/media/wanwuyin_concept.mp4)；每枚印的三联图也在 `docs/media/`
