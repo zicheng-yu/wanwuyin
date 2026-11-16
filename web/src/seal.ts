@@ -85,6 +85,17 @@ const r3 = (v: number) => Math.round(v * 1000) / 1000;
 
 let pose: (t: number) => void = () => {};
 let duration = 0;
+// Name tags hang under their rubbings; they are re-projected every frame so they follow the view.
+const anchors: { el: HTMLElement; at: THREE.Vector3 }[] = [];
+function placeTags() {
+  if (!anchors.length) return;
+  camera.updateMatrixWorld();
+  for (const { el, at } of anchors) {
+    const p = at.clone().project(camera);
+    el.style.left = `${((p.x + 1) / 2) * 100}%`;
+    el.style.top = `${((1 - p.y) / 2) * 100}%`;
+  }
+}
 
 const allDefs = mergeSeals(await loadCatalog(), collection());
 const saved = collection();
@@ -140,11 +151,9 @@ if (view === "set") {
     pg.position.set(x, 0, z + 2.6);
     scene.add(sl, pg);
     tracked.push([`${s.def.name}.seal`, sl], [`${s.def.name}.page`, pg]);
-    const at = new THREE.Vector3(x, 0, z + 2.6 + pg.userData.side / 2 + 0.5).project(camera);
     const tag = document.createElement("div");
     tag.className = "tag";
-    tag.style.left = `${((at.x + 1) / 2) * 100}%`;
-    tag.style.top = `${((1 - at.y) / 2) * 100}%`;
+    anchors.push({ el: tag, at: new THREE.Vector3(x, 0, z + 2.6 + pg.userData.side / 2 + 0.5) });
     const name = document.createElement("b"), story = document.createElement("span");
     name.textContent = materialsView ? materialName(s.def)! : displayName(s.def);
     story.textContent = materialsView ? s.def.label : `${s.def.why} · ${s.def.real}`;
@@ -185,9 +194,23 @@ if (view === "set") {
   }
 }
 
+// &capture&orbit=10: a slow camera swing for recordings of the still views (set, materials, triptych).
+// &swing (radians, default 0.35) and &push (how much closer at the end, default 0.1) shape it.
+if (capture && q.has("orbit") && view !== "anim") {
+  const T = Number(q.get("orbit")) || 10, swing = Number(q.get("swing") ?? 0.35), push = Number(q.get("push") ?? 0.1);
+  const start = camera.position.clone().sub(target);
+  const up = new THREE.Vector3(0, 1, 0);
+  pose = (t) => {
+    const k = Math.min(1, Math.max(0, t / T)), e = k * k * (3 - 2 * k);
+    camera.position.copy(target).add(start.clone().applyAxisAngle(up, swing * (e - 0.5)).multiplyScalar(1 - push * e));
+  };
+  duration = T;
+}
+
 function frame(t: number) {
   pose(t);
   camera.lookAt(target);
+  placeTags();
   renderer.render(scene, camera);
 }
 addEventListener("resize", () => {

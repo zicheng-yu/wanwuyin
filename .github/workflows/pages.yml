@@ -1,8 +1,8 @@
 name: GitHub Pages
 
+# GitHub Pages is not enabled for this repository, so a push-triggered run only fails.
+# Enable Pages (Settings → Pages → Source: GitHub Actions) and start this workflow by hand.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

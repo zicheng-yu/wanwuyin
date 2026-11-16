@@ -1,0 +1,9 @@
+# LaTeX build files (latexmk -xelatex main.tex); the submitted PDF is 盼盼法式小面包-万物印.pdf
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.xdv
+*.toc
+main.pdf
