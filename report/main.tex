@@ -29,7 +29,7 @@
 \definecolor{ink}{HTML}{2A2622}
 \definecolor{muted}{HTML}{6B6358}
 \definecolor{rule}{HTML}{D3C8B3}
-\pagecolor{cream}
+\pagecolor{white}
 \color{ink}
 
 \usepackage{graphicx}
@@ -111,56 +111,23 @@
 % =====================================================================
 \begin{titlepage}
 \thispagestyle{empty}
-\newgeometry{left=2.2cm,right=2.2cm,top=2.2cm,bottom=2.0cm}
-\begin{tikzpicture}[remember picture,overlay]
-  \fill[stone] (current page.north west) rectangle ([yshift=-0.55cm]current page.north east);
-  \fill[cinnabar] (current page.south west) rectangle ([yshift=0.35cm]current page.south east);
-\end{tikzpicture}
+\setlength{\parindent}{0pt}
+\newgeometry{left=2.6cm,right=2.6cm,top=3.2cm,bottom=2.6cm}
+{\sffamily\small\color{muted} Aholo 全球 3D AI 黑客松\quad·\quad 项目报告书}
 
-{\sffamily\small\color{muted} 群核科技 Aholo 全球 3D AI 黑客松 \quad·\quad 项目报告书}
+\vspace{3.0cm}
+{\sffamily\bfseries\fontsize{56}{62}\selectfont\color{stone}万物印}\par
+\vspace{0.55cm}
+{\color{cinnabar}\rule{1.6cm}{2pt}}\par
+\vspace{0.55cm}
+{\fontsize{18}{26}\selectfont\color{ink} 给盲童的一套“摸不到的世界”印章}\par
 
-\vspace{1.4cm}
-\begin{minipage}[c]{0.72\linewidth}
-  {\sffamily\bfseries\fontsize{60}{66}\selectfont\color{stone}万物印}\par\vspace{0.5cm}
-  {\fontsize{19}{26}\selectfont 给盲童的一套“摸不到的世界”印章}\par\vspace{0.35cm}
-  {\kai\fontsize{13.5}{20}\selectfont\color{copper} 印钮让手去猜，印面给出答案，拓片让孩子自己做一本书。}
-\end{minipage}\hfill
-\begin{minipage}[c]{0.22\linewidth}\raggedleft
-  \begin{tikzpicture}
-    \node[fill=cinnabar,text=cream,rounded corners=3pt,minimum size=3.0cm,inner sep=0pt,
-      font=\sffamily\bfseries\fontsize{30}{34}\selectfont,align=flush center] {万物\\[-2pt]之印};
-  \end{tikzpicture}
-\end{minipage}
-
-\vspace{1.0cm}
+\vspace{2.2cm}
 \noindent\includegraphics[width=\linewidth]{set_after.png}
 
-\vspace{0.2cm}
-{\small\color{muted} 八枚印：上面的印钮是 Aholo Lux3D 生成的 3D 物件，下面是各自用铜箔拓出来的一页（数字渲染）。}
-
 \vfill
-\begin{center}
-\begin{tikzpicture}[
-  chip/.style={draw=stone,line width=0.7pt,fill=white!55!cream,rounded corners=10pt,
-    inner xsep=9pt,inner ysep=5pt,font=\sffamily\small,text=stone},
-  arr/.style={-{Stealth[length=2.2mm]},line width=0.9pt,draw=copper}]
-  \node[chip] (a) {\textcolor{cinnabar}{\bfseries 摸}\ 印钮，猜它是什么};
-  \node[chip,right=0.55cm of a] (b) {\textcolor{cinnabar}{\bfseries 翻}\ 印底，摸盲文对答案};
-  \node[chip,right=0.55cm of b] (c) {\textcolor{cinnabar}{\bfseries 拓}\ 铜箔，得到一页};
-  \node[chip,right=0.55cm of c] (d) {\textcolor{cinnabar}{\bfseries 集}\ 成自己的书};
-  \draw[arr] (a)--(b); \draw[arr] (b)--(c); \draw[arr] (c)--(d);
-\end{tikzpicture}
-\end{center}
-
-\vfill
-\noindent
-\begin{tabularx}{\linewidth}{@{}>{\sffamily\color{muted}}l X@{}}
-团队 & \textcolor{stone}{\sffamily\bfseries\large\team} \\[3pt]
-日期 & 2026 年 11 月 17 日 \\[3pt]
-代码 & \url{https://github.com/zicheng-yu/wanwuyin}（公开） \\[3pt]
-视频 & \texttt{盼盼法式小面包-万物印-演示视频.mp4} \\
-\end{tabularx}
-\vspace{0.6cm}
+{\sffamily\color{muted}团队}\quad{\sffamily\bfseries\color{stone}\team}\par\vspace{5pt}
+{\sffamily\color{muted}日期}\quad{\sffamily 2026 年 11 月 17 日}
 \restoregeometry
 \end{titlepage}
 
@@ -299,8 +266,8 @@ Lux3D 是核心（30\%） & 第 \ref{sec:lux} 节：每个印钮、每块印面�
   % (b) 盖章
   \begin{scope}[shift={(5.4,0)}]
     \fill[clay] (0,0) rectangle (3.8,0.8);
-    \foreach \x in {3.2,2.75,1.2} \fill[cream] (\x+0.15,0.8) arc (0:-180:0.15);
-    \fill[cream] (0.35,0.62) rectangle (0.85,0.8);
+    \foreach \x in {3.2,2.75,1.2} \fill[white] (\x+0.15,0.8) arc (0:-180:0.15);
+    \fill[white] (0.35,0.62) rectangle (0.85,0.8);
     \draw[-{Stealth},muted,line width=0.7pt] (3.4,-0.32) -- (0.4,-0.32);
     \node[font=\footnotesize,text=muted] at (1.9,-0.62) {左右颠倒};
     \node[font=\sffamily\bfseries,text=cinnabar] at (1.9,1.55) {\no\ 盖在黏土上};

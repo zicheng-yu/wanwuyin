@@ -41,3 +41,14 @@ for n in elephant blue_whale trex shark ant saturn volcano yongzhong; do
 done
 # Key frames of the final demo video (made by the video tooling in web/tools/video, work dir /tmp/wwy)
 [ -f /tmp/wwy/video_frames.jpg ] && cp /tmp/wwy/video_frames.jpg $R/video_frames.jpg
+# White pages (2026-11-17): turn the cream background of every web render (#EFE9DD) into white;
+# ground shadows become soft grey and the objects keep their colours. See whiten.py.
+for f in $R/*.png $R/*.jpg; do
+  python3 - "$f" <<'PY' && python3 report/whiten.py "$f" "$f"
+import sys
+from PIL import Image
+im = Image.open(sys.argv[1]).convert("RGB"); w, h = im.size
+corners = [im.getpixel(p) for p in [(3, 3), (w - 4, 3), (3, h - 4), (w - 4, h - 4)]]
+sys.exit(0 if all(max(abs(a - b) for a, b in zip(c, (239, 233, 221))) <= 3 for c in corners) else 1)
+PY
+done
